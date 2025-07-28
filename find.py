@@ -11,10 +11,12 @@ HEADERS = {
 }
 
 BITNAMI_PATTERNS = [
-    r'bitnami/',
-    r'https://charts\.bitnami\.com/bitnami',
-    r'oci://registry-1\.docker\.io/bitnamicharts'
+    r'\b(bitnami/[\w-]+)\b',  # e.g., bitnami/nginx, bitnami/postgresql
+    r'\b(docker\.io/bitnami/[\w-]+)\b',  # e.g., docker.io/bitnami/nginx
+    r'https://charts\.bitnami\.com/bitnami',  # official chart repo
+    r'oci://registry-1\.docker\.io/bitnamicharts(/[a-z0-9\-]+)?'  # oci chart format
 ]
+
 
 def get_repos():
     repos = []
